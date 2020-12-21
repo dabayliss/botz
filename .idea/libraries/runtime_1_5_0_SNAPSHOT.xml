@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="runtime-1.5.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Work/SALT/runtime/target/runtime-1.5.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
