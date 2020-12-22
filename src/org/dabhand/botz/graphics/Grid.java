@@ -1,5 +1,7 @@
 package org.dabhand.botz.graphics;
 
+import org.dabhand.botz.game.Base;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,10 +11,9 @@ import java.awt.event.MouseEvent;
  * It handles dirtyness and displaying
  */
 public class Grid {
-    public final Tiles tiles = new Tiles();
     private final int x,y,height,width,m,n;
     private final OneTile[][] grid;
-    private final Container parent;
+    private final Base parent;
 
     /** Create a new grid
      * @param x The base X co-ordinate
@@ -24,7 +25,7 @@ public class Grid {
      * @param background The tile to use for 'nothing'
      * @param parent The container this grid lives on
      */
-    public Grid(int x, int y, int height, int width, int m, int n, Tiles.Tile background,Container parent) {
+    public Grid(int x, int y, int height, int width, int m, int n, Tiles.Tile background,Base parent) {
         this.x = x;
         this.y = y;
         this.height = height;
@@ -68,7 +69,7 @@ public class Grid {
         }
         public void display(Graphics g) {
             if ( dirty ) {
-                g.drawImage(tiles.get(tile),x,y,width,height,null);
+                g.drawImage(parent.getTiles().get(tile),x,y,width,height,null);
             }
         }
 
@@ -86,6 +87,7 @@ public class Grid {
         return grid[ypos][xpos].getTile();
     }
     public void display(Graphics g) {
+        System.out.println("Displaying");
         for ( int i = 0; i < m; i++ ) {
             for ( int j = 0; j < n; j++ )
                 grid[j][i].display(g);
@@ -108,6 +110,7 @@ public class Grid {
         public void mouseClicked(MouseEvent e) {
             int xpos = (e.getX() - x) / hsize();
             int ypos = (e.getY() - y) / vsize();
+            System.out.println("Clicked "+xpos);
             callMe.clicked(xpos,ypos);
             super.mouseClicked(e);
         }

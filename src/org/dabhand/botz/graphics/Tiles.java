@@ -3,6 +3,7 @@ package org.dabhand.botz.graphics;
 import net.sf.image4j.codec.ico.ICODecoder;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,6 +59,9 @@ public class Tiles {
         return tiles.computeIfAbsent(t,x-> {
             return getImage(t.getFile());
         });
+    }
+    public Cursor getCursor(Tile t){
+        return Toolkit.getDefaultToolkit().createCustomCursor(get(t),new Point(),t.toString());
     }
     public void done() {
         tiles.clear();
