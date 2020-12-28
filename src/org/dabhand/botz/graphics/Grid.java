@@ -87,7 +87,6 @@ public class Grid {
         return grid[ypos][xpos].getTile();
     }
     public void display(Graphics g) {
-        System.out.println("Displaying");
         for ( int i = 0; i < m; i++ ) {
             for ( int j = 0; j < n; j++ )
                 grid[j][i].display(g);
@@ -97,7 +96,7 @@ public class Grid {
         void clicked(int x, int y);
     }
     public void callMe(GridListener g) {
-        parent.addMouseListener(new Clicked(g));
+        parent.frame.addMouseListener(new Clicked(g));
     }
     private class Clicked extends MouseAdapter {
         private final GridListener callMe;
@@ -110,8 +109,10 @@ public class Grid {
         public void mouseClicked(MouseEvent e) {
             int xpos = (e.getX() - x) / hsize();
             int ypos = (e.getY() - y) / vsize();
-            System.out.println("Clicked "+xpos);
-            callMe.clicked(xpos,ypos);
+            if ( xpos < hsize() ) {
+                System.out.println("Clicked " + xpos);
+                callMe.clicked(xpos, ypos);
+            }
             super.mouseClicked(e);
         }
     }

@@ -1,7 +1,5 @@
 package org.dabhand.botz.game;
 
-import org.dabhand.botz.connect4.Board;
-import org.dabhand.botz.connect4.Connect4;
 import org.dabhand.botz.graphics.Tiles;
 
 import javax.swing.*;
@@ -12,21 +10,22 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-abstract public class Base extends JPanel {
-    static public final int FrameWidth = 700;
-    static public final int FrameHeight = 600;
+abstract public class Base {
+    public final int frameWidth;
+    public final int frameHeight;
     public final Tiles tiles = new Tiles();
+    public JFrame frame;
 
 
-    public Base(String title) {
+    public Base(String title,int width,int height) {
         listResources();
-        JFrame f = new JFrame();
-        f.setTitle(title);
-        f.add(this);
-        f.setSize(FrameWidth + 20, FrameHeight + 40);
+        frameWidth = width;
+        frameHeight = height;
+        frame = new JFrame();
+        frame.setTitle(title);
+        frame.setSize(frameWidth + 20, frameHeight + 40);
         Toolkit.getDefaultToolkit().setDynamicLayout(false);
-        f.setVisible(true);
-        f.addWindowListener(new WindowListener() {
+        frame.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
 

@@ -1,37 +1,29 @@
 package org.dabhand.botz.connect4;
 import org.dabhand.botz.game.Base;
-import org.dabhand.botz.graphics.Grid;
-import org.dabhand.botz.graphics.Tiles;
-
-import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
+import org.dabhand.botz.graphics.ScoreTable;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Connect4 extends Base {
 
-    private Board board = new Board(this);
+    private Board board = new Board(this,boardHeight,boardWidth);
+    private ScoreTable scoreTable = new UniformWeighted(boardWidth,0,boardHeight, scoreWidth,this, board.grid);
+    static int boardWidth = 700;
+    static int boardHeight = 600;
+    static private int scoreWidth = 300;
 
     public Connect4(String title) {
-        super(title);
+        super(title,boardWidth+scoreWidth,boardHeight);
+        frame.setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.LINE_AXIS));
+        frame.add(board);
+        frame.add(scoreTable);
+        frame.setVisible(true);
     }
 
     @Override
     public void go() {
 
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        if ( board == null )
-            System.out.println("Weird");
-        else
-            board.paint(g);
     }
 
     public static void main(String[] args) {
