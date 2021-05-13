@@ -19,6 +19,8 @@ public class UniformWeighted extends BaseScorer {
         total = 0;
         doHorizontalFours();
         doVerticalFours();
+        doDiagonalFalling();
+        doDiagonalRising();
         return total;
     }
     private void doLine(Boolean[] tiles) {
