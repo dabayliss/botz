@@ -6,6 +6,7 @@ import org.dabhand.botz.graphics.ScoreTable;
 import org.dabhand.botz.graphics.Tiles;
 
 import java.awt.*;
+import java.sql.SQLOutput;
 
 /**
  * The base from which scorers will be built
@@ -49,6 +50,38 @@ abstract public class BaseScorer extends ScoreTable {
             }
         }
     }
+    protected void doDiagonalFalling(){
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 4; j++){
+                Boolean red[] = new Boolean[4];
+                for(int k = 0; k < 4; k++){
+                    switch (grid.getTile((j+k),(i+k))){
+                        case EMPTY_C4:break;
+                        case RED_C4: red[k]= true; break;
+                        case YELLOW_C4: red[k]=false;break;
+                    }
+                }
+                takeDiagonalFalling(red);
+            }
+        }
+    }
+    protected void doDiagonalRising(){
+        for(int i = 4; i < 6; i++) {
+            for(int j = 0; j < 4; j++){
+                Boolean red[] = new Boolean[4];
+                for(int k = 0; k < 4; k++){
+                    switch (grid.getTile((j+k),(i-k))){
+                        case EMPTY_C4:break;
+                        case RED_C4: red[k]= true; break;
+                        case YELLOW_C4: red[k]=false;break;
+                    }
+                }
+                takeDiagonalRising(red);
+            }
+        }
+    }
+
+
     abstract protected void takeHorizontal(Boolean[] tiles);
     abstract protected void takeVertical(Boolean[] tiles);
     abstract protected void takeDiagonalFalling(Boolean[] tiles);
