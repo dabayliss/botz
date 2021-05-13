@@ -19,7 +19,7 @@ public class ScoreTable extends JPanel {
         this.width = width;
         this.parent = parent;
         setSize(width,height);
-        setBackground(Color.BLUE);
+        setBackground(Color.WHITE);
         setVisible(true);
     }
 

@@ -21,7 +21,7 @@ abstract public class BaseScorer extends ScoreTable {
     abstract public int getScore();
     protected void doHorizontalFours() {
         for ( int i = 0; i < 6; i++ ) {
-            for ( int j = 0; j < 3; j++ ) {
+            for ( int j = 0; j < 4; j++ ) {
                 Boolean red[] = new Boolean[4];
                 for ( int k = 0; k < 4; k++ ) {
                     switch (grid.getTile(j + k, i)) {
@@ -35,7 +35,7 @@ abstract public class BaseScorer extends ScoreTable {
         }
     }
     protected void doVerticalFours() {
-        for ( int i = 0; i < 2; i++ ) {
+        for ( int i = 0; i < 3; i++ ) {
             for ( int j = 0; j < 7; j++ ) {
                 Boolean red[] = new Boolean[4];
                 for ( int k = 0; k < 4; k++ ) {
