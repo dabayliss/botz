@@ -3,6 +3,8 @@ package org.dabhand.botz.connect4;
 import org.dabhand.botz.game.Base;
 import org.dabhand.botz.graphics.Grid;
 
+import java.awt.event.WindowEvent;
+
 /**
  * Simply score each line equally
  * Red is positive, yellow negative
@@ -21,6 +23,15 @@ public class UniformWeighted extends BaseScorer {
         doVerticalFours();
         doDiagonalFalling();
         doDiagonalRising();
+        //This is an early demo of a victory system.
+        //if(total >= 100){
+        //    System.out.println("Red Wins!");
+       // }
+       // else if(total<=-100){
+       //     System.out.println("Yellow Wins!");
+      //  }
+      //  else
+      //      System.out.println();
         return total;
     }
     private void doLine(Boolean[] tiles) {
@@ -35,6 +46,16 @@ public class UniformWeighted extends BaseScorer {
                 num++;
             }
         }
+        //Victory system
+        if(num == 4 && isRed)
+        {
+            System.exit(0);
+        }
+        else if(num == 4)
+        {
+            System.exit(0);
+        }
+        //ends
         if ( isRed != null ) {
             if ( isRed )
                 total += scaledWeight(num);
