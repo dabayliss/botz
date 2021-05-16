@@ -14,8 +14,8 @@ public class Connect4 extends Base {
     static private int scoreWidth = 300;
 
     public Connect4(String title) {
-        super(title,boardWidth+scoreWidth,boardHeight);
-        frame.setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.LINE_AXIS));
+        super(title, boardWidth + scoreWidth, boardHeight);
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.LINE_AXIS));
         frame.add(board);
         frame.add(scoreTable);
         frame.setVisible(true);

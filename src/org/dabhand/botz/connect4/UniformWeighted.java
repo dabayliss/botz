@@ -2,6 +2,7 @@ package org.dabhand.botz.connect4;
 
 import org.dabhand.botz.game.Base;
 import org.dabhand.botz.graphics.Grid;
+import org.dabhand.botz.graphics.WinScreen;
 
 import java.awt.event.WindowEvent;
 
@@ -23,15 +24,6 @@ public class UniformWeighted extends BaseScorer {
         doVerticalFours();
         doDiagonalFalling();
         doDiagonalRising();
-        //This is an early demo of a victory system.
-        //if(total >= 100){
-        //    System.out.println("Red Wins!");
-       // }
-       // else if(total<=-100){
-       //     System.out.println("Yellow Wins!");
-      //  }
-      //  else
-      //      System.out.println();
         return total;
     }
     private void doLine(Boolean[] tiles) {
@@ -49,11 +41,11 @@ public class UniformWeighted extends BaseScorer {
         //Victory system
         if(num == 4 && isRed)
         {
-            System.exit(0);
+            WinScreen w = new WinScreen();
         }
         else if(num == 4)
         {
-            System.exit(0);
+            WinScreen w = new WinScreen();
         }
         //ends
         if ( isRed != null ) {
@@ -63,6 +55,7 @@ public class UniformWeighted extends BaseScorer {
                 total -= scaledWeight(num);
         }
     }
+
     private int scaledWeight(int n) {
         switch (n) {
             case 1: return 1;

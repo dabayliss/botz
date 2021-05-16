@@ -4,23 +4,43 @@ import org.dabhand.botz.game.Base;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /**
- * A score panel is really a text window which can be updated
+ * Not yet in use, will become a display screen to pop up on victory
  */
-public class WinScreen extends JPanel {
-    private final int x,y,height,width;
-    private final Base parent;
+public class WinScreen extends JFrame implements ActionListener {
+    public WinScreen()
+    {
 
-    public WinScreen(int x, int y, int height, int width, Base parent) {
-        this.x = x;
-        this.y = y;
-        this.height = height;
-        this.width = width;
-        this.parent = parent;
-        setSize(width,height);
-        setBackground(Color.WHITE);
-        setVisible(true);
+        // create a frame
+        JFrame f = new JFrame();
+        f.setSize(400,200);
+
+        // create a button
+        JButton exit = new JButton("Exit");
+        JButton restart= new JButton("Restart(not working)");
+
+
+        // add action listener
+        exit.addActionListener(this);
+        restart.addActionListener(this::actionPerformed2);
+
+        // create a panel
+        JPanel p1 = new JPanel();
+
+        p1.add(restart);
+        p1.add(exit);
+        f.add(p1);
+        f.show();
     }
 
-}
+    // if the button is pressed
+    public void actionPerformed(ActionEvent e) {
+        System.exit(0);
+    }
+    public void actionPerformed2(ActionEvent e) {
+        System.out.println("tester");
+    }
+    }
+

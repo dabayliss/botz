@@ -1,6 +1,7 @@
 package org.dabhand.botz.game;
 
 import org.dabhand.botz.graphics.Tiles;
+import org.dabhand.botz.graphics.WinScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+
 
 abstract public class Base {
     public final int frameWidth;
@@ -19,11 +21,13 @@ abstract public class Base {
 
     public Base(String title,int width,int height) {
         listResources();
+
         frameWidth = width;
         frameHeight = height;
         frame = new JFrame();
         frame.setTitle(title);
         frame.setSize(frameWidth + 20, frameHeight + 40);
+
         Toolkit.getDefaultToolkit().setDynamicLayout(false);
         frame.addWindowListener(new WindowListener() {
             @Override
@@ -62,6 +66,7 @@ abstract public class Base {
             }
         });
     }
+
     public abstract void go();
 
     public Tiles getTiles() {
