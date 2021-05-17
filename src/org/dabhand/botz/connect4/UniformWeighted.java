@@ -2,6 +2,9 @@ package org.dabhand.botz.connect4;
 
 import org.dabhand.botz.game.Base;
 import org.dabhand.botz.graphics.Grid;
+import org.dabhand.botz.graphics.WinScreen;
+
+import java.awt.event.WindowEvent;
 
 /**
  * Simply score each line equally
@@ -35,6 +38,16 @@ public class UniformWeighted extends BaseScorer {
                 num++;
             }
         }
+        //Victory system
+        if(num == 4 && isRed)
+        {
+            WinScreen w = new WinScreen();
+        }
+        else if(num == 4)
+        {
+            WinScreen w = new WinScreen();
+        }
+        //ends
         if ( isRed != null ) {
             if ( isRed )
                 total += scaledWeight(num);
@@ -42,6 +55,7 @@ public class UniformWeighted extends BaseScorer {
                 total -= scaledWeight(num);
         }
     }
+
     private int scaledWeight(int n) {
         switch (n) {
             case 1: return 1;
